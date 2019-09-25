@@ -8,6 +8,8 @@ import { Album } from '../album.model';
 })
 export class AlbumCardComponent implements OnInit {
 
+  newPrice: number;
+
   @Input()
   album: Album;
 
@@ -16,6 +18,10 @@ export class AlbumCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (this.album.onSale) {
+      // Apply 10% discount
+      this.newPrice = this.album.price - (this.album.price * .10);
+      }
   }
 
   showAlbum() {
